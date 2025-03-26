@@ -1,5 +1,4 @@
-const api = require("../../services/api");
-
+const axios = require('axios');
 class ZabbixAPI {
   constructor(url, username, password) {
     this.url = url;
@@ -20,7 +19,7 @@ class ZabbixAPI {
       auth: null,
     };
 
-    const response = await api.post(this.url + "/api_jsonrpc.php", data);
+    const response = await axios.post(this.url + "/api_jsonrpc.php", data);
     return response.data;
   }
 
@@ -33,9 +32,10 @@ class ZabbixAPI {
       auth: this.authToken,
     };
 
-    const response = await api.post(this.url + "/api_jsonrpc.php", data);
+    const response = await axios.post(this.url + "/api_jsonrpc.php", data);
     return response.data;
   }
+
   
   // adicione aqui a função getItens
 }
